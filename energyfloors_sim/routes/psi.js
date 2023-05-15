@@ -6,7 +6,13 @@ var router = express.Router();
 /* GET psi listing. */
 router.get('/ActualEFState', function(req, res, next) {
   let randEnergy = Math.random() * 30;
-  return res.json({energy: randEnergy.toFixed(2)});
+  return res.json({
+    Energy: (randEnergy * 1000.0).toFixed(2),
+    EnergyUnit: 'mWh',
+    Power: (randEnergy / 3.6).toFixed(2),
+    PowerUnit: 'mW',
+    Timestamp: Date.now()
+  });
 });
 
 router.get('/ActualWFState', function(req, res, next) {
